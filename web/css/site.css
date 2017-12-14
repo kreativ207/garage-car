@@ -120,3 +120,7 @@ a.desc:after {
     outline: none;
     background-color: rgba(0, 0, 0, 0);
 }
+
+.register-link {
+    font-size: 21px;
+}
