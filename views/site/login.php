@@ -55,6 +55,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div style="border: 1px solid grey; padding: 10px">
 <p>Super Admin</p>
-<p>login: admin@admin.com</p>
+<p>Login: admin@admin.com</p>
 <p>Password: 1234</p>
 </div>

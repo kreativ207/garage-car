@@ -78,6 +78,7 @@ class AdminCarsController extends Controller
 
         } elseif($model->load(Yii::$app->request->post())){
             if ($model->save()) {
+                Yii::$app->session->setFlash('success', "Data added to database");
                 return $this->redirect(['index']);
             }
         }
@@ -99,7 +100,8 @@ class AdminCarsController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->setFlash('success', "Data added to database");
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,

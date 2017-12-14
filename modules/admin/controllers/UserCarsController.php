@@ -77,6 +77,7 @@ class UserCarsController extends Controller
         } elseif($model->load(Yii::$app->request->post())){
             $model->user_id = Yii::$app->user->getId();
             if ($model->save()) {
+                Yii::$app->session->setFlash('success', "Data added to database");
                 return $this->redirect(['index']);
             }
         }
@@ -98,7 +99,8 @@ class UserCarsController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->setFlash('success', "Data added to database");
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
