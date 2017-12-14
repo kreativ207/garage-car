@@ -6,6 +6,7 @@ use Yii;
 use app\modules\admin\models\UserCars;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -52,12 +53,15 @@ class AdminCarsController extends Controller
      */
     public function actionIndex()
     {
+        $allCar = ArrayHelper::map(\app\modules\admin\models\Car::find()->all(), 'id', 'car_name');
+
         $dataProvider = new ActiveDataProvider([
             'query' => UserCars::find(),
         ]);
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
+            'allCar' => $allCar,
         ]);
     }
 

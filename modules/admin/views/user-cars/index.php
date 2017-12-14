@@ -1,5 +1,6 @@
 <?php
 
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -8,6 +9,7 @@ use yii\grid\GridView;
 
 $this->title = 'User Cars';
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="user-cars-index">
 
@@ -24,11 +26,8 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'cars_id',
                 'format' => 'raw',
-                'value' => function ($model) {
-                    $res = \app\modules\admin\models\Car::find()->select("car_name")->where(["id" => $model->cars_id])->asArray()->one();
-                    if($res){
-                        return $res["car_name"];
-                    }
+                'value' => function ($model) use ($allCar) {
+                    return $allCar[$model->cars_id];
                 },
             ],
             'car_number',
